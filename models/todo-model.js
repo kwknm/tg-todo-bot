@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
   completed: { type: Boolean, default: false },
   created_at: {
     type: Date,
-    default: moment(new Date()).tz("Europe/Moscow").format()
+    default: () => moment().tz("Europe/Moscow").format()
   }
 });
 

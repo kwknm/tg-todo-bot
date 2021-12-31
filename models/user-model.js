@@ -5,7 +5,7 @@ const schema = new mongoose.Schema({
   user_id: { type: Number, required: true },
   created_at: {
     type: Date,
-    default: moment(new Date()).tz("Europe/Moscow").format()
+    default: () => moment().tz("Europe/Moscow").format()
   }
 });
 

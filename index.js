@@ -7,6 +7,7 @@ const botCommands = require("./bot-command-list");
 const userModel = require("./models/user-model");
 const todoModel = require("./models/todo-model");
 const admins = process.env.ADMINS.split(",").map((item) => item.trim());
+const moment = require("moment-timezone");
 
 const start = async () => {
   try {
@@ -137,7 +138,7 @@ const start = async () => {
 ID: *${ix + 1}*
 Название: *${todo.title}*
 Выполнено: *${todo.completed ? "Да" : "Нет"}*
-Создана: *${todo.createdAt}*
+Создана: *${moment(todo.created_at).format("DD.MM.YYYY HH:mm:ss")}*
 				`;
         await bot.sendMessage(chatId, todoLayout, {
           parse_mode: "MARKDOWN",

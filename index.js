@@ -133,14 +133,14 @@ const start = async () => {
 Чтобы добавить, используйте /new`
         );
       }
-      todos.map(async (todo, ix) => {
+      todos.map((todo, ix) => {
         const todoLayout = `
 ID: *${ix + 1}*
 Название: *${todo.title}*
 Выполнено: *${todo.completed ? "Да" : "Нет"}*
 Создана: *${moment(todo.created_at).format("DD.MM.YYYY HH:mm:ss")}*
 				`;
-        await bot.sendMessage(chatId, todoLayout, {
+        bot.sendMessage(chatId, todoLayout, {
           parse_mode: "MARKDOWN",
           reply_markup: JSON.stringify({
             inline_keyboard: [
